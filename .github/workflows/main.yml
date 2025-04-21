@@ -31,5 +31,5 @@ jobs:
             docker rm zipfarm-app || true
 
             docker build -t zipfarm-app .
-            docker run -d -p 6000:6000 --name zipfarm-app zipfarm-app
+            docker run -d -p 5000:5000 --name zipfarm-app zipfarm-app
           EOF
