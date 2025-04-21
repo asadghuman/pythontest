@@ -24,7 +24,7 @@ jobs:
 
       - name: SSH and deploy Docker container
         run: |
-          ssh -o StrictHostKeyChecking=no -i key.pem -p ${{ secrets.SSH_PORT }} ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} 'bash -s' << 'EOF'
+          ssh -o StrictHostKeyChecking=no -i key.pem -p ${{ secrets.SSH_PORT }} ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} 'bash -s' << EOF
             cd /home/${{ secrets.EC2_USERNAME }}/zipfarm-flask-app
 
             docker stop zipfarm-app || true
@@ -32,4 +32,4 @@ jobs:
 
             docker build -t zipfarm-app .
             docker run -d -p 5000:5000 --name zipfarm-app zipfarm-app
-        EOF
+          EOF
